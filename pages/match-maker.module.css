@@ -1,0 +1,49 @@
+.matchgamecontainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.tile {
+    min-width: 30%;
+    height: 80px;
+    margin: 10px;
+    padding: 5px;
+    background-color: rgb(155, 235, 224);
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    flex-wrap: wrap;
+
+}
+
+.clicked {
+    background-color: rgb(133, 115, 214);
+}
+
+.matched {
+    background-color: #10a37f;
+}
+
+.tile:hover {
+    background-color: gray;
+}
+
+.matchgamecontainer input[type="button"] {
+    padding: 12px 0;
+    color: #fff;
+    background-color: #10a37f;
+    border: none;
+    border-radius: 4px;
+    margin: 10px;
+    text-align: center;
+    cursor: pointer;
+    width: 120px;
+  }
+
+
+  

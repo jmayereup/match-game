@@ -1,7 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
-  organization: "org-9Mjw59g6bdHwlaus6QTZ3NtZ",
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
@@ -27,13 +26,13 @@ export default async function (req, res) {
   }
 
   try {
-    const completion = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: [{role: "user", content : generatePrompt(topic)}],
-      temperature: 0.7,
+    const completion = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: generatePrompt(topic),
+      temperature: 0.6,
       max_tokens: 400
     });
-    res.status(200).json({ result: completion.data.choices[0].message.content});
+    res.status(200).json({ result: completion.data.choices[0].text });
     console.log(result);
   } catch(error) {
     // Consider adjusting the error handling logic for your use case
@@ -53,7 +52,7 @@ export default async function (req, res) {
 
 function generatePrompt(topic) {
   const vocabTopic = topic;
-  return `Please create a set of about 16 English and Thai word pairs about this topic: ${vocabTopic}.
+  return `Create a set of about 16 English and Thai word pairs about this ${vocabTopic}.
 Use this format:
 spoon - ช้อน
 fork - ส้อม
